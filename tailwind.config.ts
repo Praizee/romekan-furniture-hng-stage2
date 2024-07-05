@@ -8,13 +8,33 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      backgroundImage: {},
+
+      colors: {
+        placeholder: "#8D8B8B",
+
+        romekan: {
+          navbar: "#2F2F2F",
+          brown: "#652A0E",
+          blue: "#024E82",
+          text: {
+            100: "#BABABA",
+            200: "#3E3E3E",
+            300: "#383838",
+          },
+          error: {
+            10: "#6A0101",
+            20: "#FC3131",
+            30: "#FEDCDC",
+            40: "#FFEBEB",
+          },
+        },
       },
     },
   },
   plugins: [],
 };
 export default config;
+
+/* Made with 💙 By Stephen Adeniji
+https://stephen-adeniji.vercel.app/ */
