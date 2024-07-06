@@ -39,7 +39,7 @@ const products: Product[] = [
     price: 64,
     discountPrice: 130,
     imageSrc: Product2,
-    discount: "",
+    discount: "-35%",
   },
   {
     id: 3,
@@ -47,7 +47,7 @@ const products: Product[] = [
     price: 499,
     discountPrice: 349,
     imageSrc: Product3,
-    discount: "-35%",
+    discount: "",
   },
   {
     id: 4,
@@ -55,7 +55,7 @@ const products: Product[] = [
     price: 54,
     discountPrice: 124,
     imageSrc: Product4,
-    discount: "-35%",
+    discount: "",
   },
   {
     id: 5,
@@ -63,7 +63,7 @@ const products: Product[] = [
     price: 149,
     discountPrice: 99,
     imageSrc: Product5,
-    discount: "-35%",
+    discount: "",
   },
   {
     id: 6,
@@ -79,7 +79,7 @@ const products: Product[] = [
     price: 89,
     discountPrice: 59,
     imageSrc: Product7,
-    discount: "-35%",
+    discount: "",
   },
   {
     id: 8,
@@ -95,7 +95,7 @@ const products: Product[] = [
     price: 129,
     discountPrice: 99,
     imageSrc: Product9,
-    discount: "-35%",
+    discount: "",
   },
   {
     id: 10,
@@ -103,7 +103,7 @@ const products: Product[] = [
     price: 59,
     discountPrice: 39,
     imageSrc: Product10,
-    discount: "-35%",
+    discount: "",
   },
   {
     id: 11,
@@ -111,7 +111,7 @@ const products: Product[] = [
     price: 399,
     discountPrice: 299,
     imageSrc: Product11,
-    discount: "-35%",
+    discount: "",
   },
   {
     id: 12,
