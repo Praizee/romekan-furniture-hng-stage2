@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import Product1 from "@/public/assets/images/product-1.png";
 import Product2 from "@/public/assets/images/product-2.png";
@@ -124,6 +124,12 @@ const products: Product[] = [
 ];
 
 const ProductListing: React.FC = () => {
+  const [selectedButton, setSelectedButton] = useState<string>("1");
+
+  const handleButtonClick = (value: string) => {
+    setSelectedButton(value);
+  };
+
   return (
     <section className="mx-auto max-w-screen-xl px-4 md:px-8 py-12 lg:py-16">
       <div className="flex flex-col gap-[44px]">
@@ -249,36 +255,20 @@ const ProductListing: React.FC = () => {
 
         {/* pagination */}
         <div className="w-max mx-auto flex gap-8 pt-16">
-          <button
-            type="button"
-            className="focus:bg-romekan-blue bg-white size-[30px] lg:size-[47px] border border-romekan-blue focus:border text-black focus:text-white lg:text-[24px] rounded-[4px] duration-200 active:scale-95 flex justify-center items-center"
-          >
-            1
-          </button>
-          <button
-            type="button"
-            className="focus:bg-romekan-blue bg-white size-[30px] lg:size-[47px] border border-romekan-blue focus:border text-black focus:text-white lg:text-[24px] rounded-[4px] duration-200 active:scale-95 flex justify-center items-center"
-          >
-            2
-          </button>
-          <button
-            type="button"
-            className="focus:bg-romekan-blue bg-white size-[30px] lg:size-[47px] border border-romekan-blue focus:border text-black focus:text-white lg:text-[24px] rounded-[4px] duration-200 active:scale-95 flex justify-center items-center"
-          >
-            3
-          </button>
-          <button
-            type="button"
-            className="focus:bg-romekan-blue bg-white size-[30px] lg:size-[47px] border border-romekan-blue focus:border text-black focus:text-white lg:text-[24px] rounded-[4px] duration-200 active:scale-95 flex justify-center items-center"
-          >
-            4
-          </button>
-          <button
-            type="button"
-            className="focus:bg-romekan-blue bg-white size-[30px] lg:size-[47px] border border-romekan-blue focus:border text-black focus:text-white lg:text-[24px] rounded-[4px] duration-200 active:scale-95 flex justify-center items-center"
-          >
-            5
-          </button>
+          {["1", "2", "3", "4", "5"].map((number) => (
+            <button
+              key={number}
+              type="button"
+              onClick={() => handleButtonClick(number)}
+              className={`focus:bg-romekan-blue ${
+                selectedButton === number
+                  ? "bg-romekan-blue text-white"
+                  : "bg-white text-black"
+              } size-[30px] lg:size-[47px] border border-romekan-blue focus:border lg:text-[24px] rounded-[4px] duration-200 active:scale-95 flex justify-center items-center`}
+            >
+              {number}
+            </button>
+          ))}
         </div>
       </div>
     </section>
