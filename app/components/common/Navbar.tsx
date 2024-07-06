@@ -3,9 +3,11 @@
 import { useState } from "react";
 import { IoClose, IoMenu } from "react-icons/io5";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const [state, setState] = useState(false);
+  const router = useRouter();
 
   const navigation = [
     { title: "Home", path: "/" },
@@ -16,8 +18,8 @@ const Navbar = () => {
   return (
     <nav className="w-full border-b md:border-0 sticky top-0 bg-white backdrop-blur-md z-[999]">
       <div className="items-center max-w-screen-xl mx-auto md:flex">
-        <div className="flex items-center  px-4 md:px-8 justify-between py-3 md:py-5 md:block">
-          <Link href="/" className="text-[24px] font-bold">
+        <div className="flex items-center px-4 md:px-8 justify-between py-3 md:py-5 md:block">
+          <Link href="/" className="lg:text-[24px] text-[18px] font-bold">
             ROME
             <span className="font-normal">KAN</span>
           </Link>
@@ -123,6 +125,7 @@ const Navbar = () => {
           </button>
 
           <button
+            onClick={() => router.push("/cart")}
             type="button"
             title="Cart"
             className="active:scale-95 duration-150 relative"
