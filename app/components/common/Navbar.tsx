@@ -25,8 +25,9 @@ const Navbar = () => {
           </Link>
           <div className="md:hidden inline-flex gap-x-4 items-center">
             <button
+              onClick={() => router.push("/cart")}
               type="button"
-              title="Bookmark"
+              title="Cart"
               className="active:scale-95 duration-150 relative"
             >
               <svg
