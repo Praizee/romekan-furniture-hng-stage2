@@ -44,81 +44,81 @@ const products: Product[] = [
   },
   {
     id: 3,
-    name: "Elegant Bed",
-    price: 499,
-    discountPrice: 349,
+    name: "BRed Party Chair",
+    price: 54,
+    discountPrice: 124,
     imageSrc: Product3,
     discount: "",
   },
   {
     id: 4,
-    name: "Black Party Chair",
-    price: 54,
-    discountPrice: 124,
+    name: "Krisgold Armgold",
+    price: 49,
+    discountPrice: 234,
     imageSrc: Product4,
     discount: "",
   },
   {
     id: 5,
-    name: "Office Chair",
-    price: 149,
-    discountPrice: 99,
+    name: "White classy chair",
+    price: 49,
+    discountPrice: 240,
     imageSrc: Product5,
     discount: "",
   },
   {
     id: 6,
-    name: "TV Console",
-    price: 199,
-    discountPrice: 149,
+    name: "Comfy chair",
+    price: 49,
+    discountPrice: 264,
     imageSrc: Product6,
     discount: "-35%",
   },
   {
     id: 7,
-    name: "Bookshelf",
-    price: 89,
-    discountPrice: 59,
+    name: "Black Party Chair",
+    price: 49,
+    discountPrice: 224,
     imageSrc: Product7,
     discount: "",
   },
   {
     id: 8,
-    name: "Coffee Table",
-    price: 79,
-    discountPrice: 49,
+    name: "White classy chair",
+    price: 69,
+    discountPrice: 130,
     imageSrc: Product8,
     discount: "-35%",
   },
   {
     id: 9,
-    name: "Recliner Chair",
-    price: 129,
-    discountPrice: 99,
+    name: "Black Party Chair",
+    price: 54,
+    discountPrice: 124,
     imageSrc: Product9,
     discount: "",
   },
   {
     id: 10,
-    name: "Bedside Table",
-    price: 59,
-    discountPrice: 39,
+    name: "Krisgold Armgold",
+    price: 49,
+    discountPrice: 224,
     imageSrc: Product10,
     discount: "",
   },
   {
     id: 11,
-    name: "Wardrobe",
-    price: 399,
-    discountPrice: 299,
+    name: "White classy chair",
+    price: 89,
+    discountPrice: 204,
     imageSrc: Product11,
     discount: "",
   },
   {
     id: 12,
-    name: "Shoe Rack",
+    name: "Comfy chair",
     price: 49,
-    discountPrice: 29,
+    discountPrice: 124,
     imageSrc: Product12,
     discount: "-35%",
   },
@@ -215,12 +215,12 @@ const ProductListing: React.FC = () => {
               </div>
 
               <div>
-                <p className="text-black text-[14px] lg:text-[24px]">
+                <p className="text-black text-[14px] lg:text-[18px]">
                   {product.name}
                 </p>
                 <span className="flex gap-8 justify-between items-center">
                   <span className="flex gap-2 items-center">
-                    <p className="text-black text-base lg:text-[28px] font-medium">
+                    <p className="text-black text-base lg:text-[24px] font-medium">
                       ${product.price}
                     </p>
                     <p className="text-[#BABABA] text-[10px] lg:text-[20px] font-medium">
