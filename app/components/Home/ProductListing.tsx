@@ -14,6 +14,7 @@ import Product9 from "@/public/assets/images/product-9.png";
 import Product10 from "@/public/assets/images/product-10.png";
 import Product11 from "@/public/assets/images/product-11.png";
 import Product12 from "@/public/assets/images/product-12.png";
+import { useRouter } from "next/navigation";
 
 interface Product {
   id: number;
@@ -124,6 +125,7 @@ const products: Product[] = [
 ];
 
 const ProductListing: React.FC = () => {
+  const router = useRouter();
   const [selectedButton, setSelectedButton] = useState<string>("1");
 
   const handleButtonClick = (value: string) => {
@@ -227,11 +229,29 @@ const ProductListing: React.FC = () => {
                   </span>
 
                   <button
+                    onClick={() => router.push("/cart")}
                     type="button"
                     title="Add to cart"
-                    className="bg-romekan-blue size-[43px] p-[8px] rounded-full flex justify-center items-center duration-150 active:scale-95"
+                    className="bg-romekan-blue size-[20px] lg:size-[43px] p-0 lg:p-[8px] rounded-full flex justify-center items-center duration-150 active:scale-95"
                   >
                     <svg
+                      className="lg:hidden block"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1.5 3H11L9.5 8H3L1.5 3ZM1.5 3L1.125 1.75M4.996 5.5H5.996M5.996 5.5H6.996M5.996 5.5V4.5M5.996 5.5V6.5M5.5 9.75C5.5 9.94891 5.42098 10.1397 5.28033 10.2803C5.13968 10.421 4.94891 10.5 4.75 10.5C4.55109 10.5 4.36032 10.421 4.21967 10.2803C4.07902 10.1397 4 9.94891 4 9.75M8.5 9.75C8.5 9.94891 8.42098 10.1397 8.28033 10.2803C8.13968 10.421 7.94891 10.5 7.75 10.5C7.55109 10.5 7.36032 10.421 7.21967 10.2803C7.07902 10.1397 7 9.94891 7 9.75"
+                        stroke="white"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+
+                    <svg
+                      className="hidden lg:block"
                       width="24"
                       height="25"
                       viewBox="0 0 24 25"
