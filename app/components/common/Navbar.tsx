@@ -105,7 +105,7 @@ const Navbar = () => {
         <div className="hidden md:inline-flex items-center gap-x-8 md:px-8">
           <button
             type="button"
-            title="Bookmark"
+            title="Wishlist"
             className="active:scale-95 duration-150"
           >
             <svg
