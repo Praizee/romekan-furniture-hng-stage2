@@ -248,11 +248,11 @@ const Cart = () => {
           <div className="flex flex-col lg:flex-row gap-8 justify-between">
             <form className="flex flex-col md:flex-row gap-4">
               <input
-                type="number"
+                type="text"
                 name="coupon"
                 placeholder="Coupon Code"
                 required
-                className="border border-romekan-blue h-[56px] w-full lg:w-[300px] p-4 focus:outline-romekan-blue"
+                className="border border-romekan-blue h-[56px] w-full lg:w-[300px] p-4 focus:outline-romekan-blue uppercase placeholder:capitalize"
               />
               <button
                 type="submit"
