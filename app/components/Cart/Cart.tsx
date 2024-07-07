@@ -262,7 +262,8 @@ const Cart = () => {
               </button>
             </form>
 
-            <div className="flex flex-col gap-6 p-4 border border-[#565656] rounded-[17px] min-h-[324px] lg:min-w-[470px] text-black">
+            {/* cart total */}
+            <div className="flex flex-col gap-6 p-4 shadow-md shadow-[#0000000D] lg:shadow-none lg:border border-[#565656] rounded-[17px] min-h-[324px] lg:min-w-[470px] text-black">
               <h3 className="text-[20px] font-medium">Cart Total</h3>
               <span className="flex flex-col divide-y-[1px] divide-black">
                 <span className="text-base flex gap-8 justify-between pb-4">
