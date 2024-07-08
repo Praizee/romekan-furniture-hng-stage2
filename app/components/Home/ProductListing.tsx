@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";
+import FadeUp from "@/app/components/common/FadeUp";
 
 import Product1 from "@/public/assets/images/product-1.png";
 import Product2 from "@/public/assets/images/product-2.png";
@@ -349,85 +350,87 @@ const ProductListing: React.FC = () => {
         </div>
 
         {/* products list */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 gap-y-20 w-max mx-auto lg:w-full">
-          {currentCategoryProducts.map((product) => (
-            <div
-              key={product.id}
-              className="flex flex-col gap-4 max-w-[160px] lg:max-w-fit"
-            >
-              <div className="relative">
-                <span className="bg-[#F9F9F9] rounded-[4px] w-[154px] h-[167px] lg:w-[387px] lg:h-[381px] lg:max-w-full lg:max-h-full flex justify-center items-center">
-                  <Image
-                    src={product.imageSrc}
-                    alt={product.name}
-                    className="hover:scale-110 duration-200 max-w-[76px] max-h-[87px] w-auto h-auto lg:max-w-full lg:max-h-full"
-                  />
-                </span>
-                {product.discount && (
-                  <p className="bg-romekan-brown text-white px-[12px] py-[4px] rounded-[4px] text-[12px] w-max absolute top-0 right-0 hidden lg:block">
-                    {product.discount}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <p className="text-black text-[14px] lg:text-[18px]">
-                  {product.name}
-                </p>
-                <span className="flex gap-8 justify-between items-center">
-                  <span className="flex gap-2 items-center">
-                    <p className="text-black text-base lg:text-[24px] font-medium">
-                      ${product.price}
-                    </p>
-                    <p className="text-[#BABABA] text-[10px] lg:text-[20px] font-medium">
-                      ${product.discountPrice}
-                    </p>
+        <FadeUp>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 gap-y-20 w-max mx-auto lg:w-full">
+            {currentCategoryProducts.map((product) => (
+              <div
+                key={product.id}
+                className="flex flex-col gap-4 max-w-[160px] lg:max-w-fit"
+              >
+                <div className="relative">
+                  <span className="bg-[#F9F9F9] rounded-[4px] w-[154px] h-[167px] lg:w-[387px] lg:h-[381px] lg:max-w-full lg:max-h-full flex justify-center items-center">
+                    <Image
+                      src={product.imageSrc}
+                      alt={product.name}
+                      className="hover:scale-110 duration-200 max-w-[76px] max-h-[87px] w-auto h-auto lg:max-w-full lg:max-h-full"
+                    />
                   </span>
+                  {product.discount && (
+                    <p className="bg-romekan-brown text-white px-[12px] py-[4px] rounded-[4px] text-[12px] w-max absolute top-0 right-0 hidden lg:block">
+                      {product.discount}
+                    </p>
+                  )}
+                </div>
 
-                  <button
-                    onClick={() => router.push("/cart")}
-                    type="button"
-                    title="Add to cart"
-                    className="bg-romekan-blue size-[20px] lg:size-[43px] p-0 lg:p-[8px] rounded-full flex justify-center items-center duration-150 active:scale-95"
-                  >
-                    <svg
-                      className="lg:hidden block"
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M1.5 3H11L9.5 8H3L1.5 3ZM1.5 3L1.125 1.75M4.996 5.5H5.996M5.996 5.5H6.996M5.996 5.5V4.5M5.996 5.5V6.5M5.5 9.75C5.5 9.94891 5.42098 10.1397 5.28033 10.2803C5.13968 10.421 4.94891 10.5 4.75 10.5C4.55109 10.5 4.36032 10.421 4.21967 10.2803C4.07902 10.1397 4 9.94891 4 9.75M8.5 9.75C8.5 9.94891 8.42098 10.1397 8.28033 10.2803C8.13968 10.421 7.94891 10.5 7.75 10.5C7.55109 10.5 7.36032 10.421 7.21967 10.2803C7.07902 10.1397 7 9.94891 7 9.75"
-                        stroke="white"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                <div>
+                  <p className="text-black text-[14px] lg:text-[18px]">
+                    {product.name}
+                  </p>
+                  <span className="flex gap-8 justify-between items-center">
+                    <span className="flex gap-2 items-center">
+                      <p className="text-black text-base lg:text-[24px] font-medium">
+                        ${product.price}
+                      </p>
+                      <p className="text-[#BABABA] text-[10px] lg:text-[20px] font-medium">
+                        ${product.discountPrice}
+                      </p>
+                    </span>
 
-                    <svg
-                      className="hidden lg:block"
-                      width="24"
-                      height="25"
-                      viewBox="0 0 24 25"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+                    <button
+                      onClick={() => router.push("/cart")}
+                      type="button"
+                      title="Add to cart"
+                      className="bg-romekan-blue size-[20px] lg:size-[43px] p-0 lg:p-[8px] rounded-full flex justify-center items-center duration-150 active:scale-95"
                     >
-                      <path
-                        d="M3 6.5H22L19 16.5H6L3 6.5ZM3 6.5L2.25 4M9.992 11.5H11.992M11.992 11.5H13.992M11.992 11.5V9.5M11.992 11.5V13.5M11 20C11 20.3978 10.842 20.7794 10.5607 21.0607C10.2794 21.342 9.89782 21.5 9.5 21.5C9.10218 21.5 8.72064 21.342 8.43934 21.0607C8.15804 20.7794 8 20.3978 8 20M17 20C17 20.3978 16.842 20.7794 16.5607 21.0607C16.2794 21.342 15.8978 21.5 15.5 21.5C15.1022 21.5 14.7206 21.342 14.4393 21.0607C14.158 20.7794 14 20.3978 14 20"
-                        stroke="white"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
-                </span>
+                      <svg
+                        className="lg:hidden block"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1.5 3H11L9.5 8H3L1.5 3ZM1.5 3L1.125 1.75M4.996 5.5H5.996M5.996 5.5H6.996M5.996 5.5V4.5M5.996 5.5V6.5M5.5 9.75C5.5 9.94891 5.42098 10.1397 5.28033 10.2803C5.13968 10.421 4.94891 10.5 4.75 10.5C4.55109 10.5 4.36032 10.421 4.21967 10.2803C4.07902 10.1397 4 9.94891 4 9.75M8.5 9.75C8.5 9.94891 8.42098 10.1397 8.28033 10.2803C8.13968 10.421 7.94891 10.5 7.75 10.5C7.55109 10.5 7.36032 10.421 7.21967 10.2803C7.07902 10.1397 7 9.94891 7 9.75"
+                          stroke="white"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+
+                      <svg
+                        className="hidden lg:block"
+                        width="24"
+                        height="25"
+                        viewBox="0 0 24 25"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M3 6.5H22L19 16.5H6L3 6.5ZM3 6.5L2.25 4M9.992 11.5H11.992M11.992 11.5H13.992M11.992 11.5V9.5M11.992 11.5V13.5M11 20C11 20.3978 10.842 20.7794 10.5607 21.0607C10.2794 21.342 9.89782 21.5 9.5 21.5C9.10218 21.5 8.72064 21.342 8.43934 21.0607C8.15804 20.7794 8 20.3978 8 20M17 20C17 20.3978 16.842 20.7794 16.5607 21.0607C16.2794 21.342 15.8978 21.5 15.5 21.5C15.1022 21.5 14.7206 21.342 14.4393 21.0607C14.158 20.7794 14 20.3978 14 20"
+                          stroke="white"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  </span>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </FadeUp>
 
         {/* pagination */}
         <div className="w-max mx-auto flex gap-8 pt-8 lg:pt-16">
