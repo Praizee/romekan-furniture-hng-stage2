@@ -198,15 +198,18 @@ const ProductListing: React.FC = () => {
         </div>
 
         {/* products list */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 gap-y-20">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 gap-y-20 w-max mx-auto lg:w-full">
           {products.map((product) => (
-            <div key={product.id} className="flex flex-col gap-4">
+            <div
+              key={product.id}
+              className="flex flex-col gap-4 max-w-[160px] lg:max-w-fit"
+            >
               <div className="relative">
-                <span className="bg-[#F9F9F9] rounded-[4px] max-w-[154px] max-h-[387px] lg:w-[387px] lg:h-[381px] lg:max-w-full lg:max-h-full flex justify-center items-center">
+                <span className="bg-[#F9F9F9] rounded-[4px] w-[154px] h-[167px] lg:w-[387px] lg:h-[381px] lg:max-w-full lg:max-h-full flex justify-center items-center">
                   <Image
                     src={product.imageSrc}
                     alt={product.name}
-                    className="hover:scale-110 duration-200 w-1/2 lg:w-auto"
+                    className="hover:scale-110 duration-200 max-w-[76px] max-h-[87px] w-auto h-auto lg:max-w-full lg:max-h-full"
                   />
                 </span>
                 <p className="bg-romekan-brown text-white px-[12px] py-[4px] rounded-[4px] text-[12px] w-max absolute top-0 right-0 hidden lg:block">
@@ -274,7 +277,7 @@ const ProductListing: React.FC = () => {
         </div>
 
         {/* pagination */}
-        <div className="w-max mx-auto flex gap-8 pt-16">
+        <div className="w-max mx-auto flex gap-8 pt-8 lg:pt-16">
           {["1", "2", "3", "4", "5"].map((number) => (
             <button
               key={number}
