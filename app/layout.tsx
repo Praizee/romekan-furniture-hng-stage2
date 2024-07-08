@@ -17,7 +17,8 @@ export const metadata: Metadata = {
   },
   description: "Timbu Cloud Shop Mini Online Store",
 
-  keywords: ["ROMEKAN"],
+  keywords: ["Timbu", "Timbu Cloud", "Timbu Shop", "Timbu Cloud Shop"],
+  // "ROMEKAN",
   // openGraph: {
   //   images: "/opengraph-image.png",
   // },
