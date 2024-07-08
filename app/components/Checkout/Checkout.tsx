@@ -8,10 +8,9 @@ import { BaseLayout } from "@/app/_layouts";
 
 import Product1 from "@/public/assets/images/red-chair.png";
 import Product2 from "@/public/assets/images/krisgold-chair.png";
+import CheckoutModal from "./CheckoutModal";
 
 const Checkout = () => {
-  const router = useRouter();
-
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [quantity1, setQuantity1] = useState<string>("01");
   const [quantity2, setQuantity2] = useState<string>("02");
@@ -423,12 +422,13 @@ const Checkout = () => {
             </label>
           </div>
 
-          <button
+          <CheckoutModal />
+          {/* <button
             type="button"
             className="text-[14px] lg:text-base rounded-[4px] border border-romekan-blue h-[56px] p-[10px] px-[20px] w-max mx-auto active:scale-95 duration-150 bg-romekan-blue text-white"
           >
             Complete order
-          </button>
+          </button> */}
         </div>
       </section>
     </BaseLayout>
