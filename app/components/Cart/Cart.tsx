@@ -12,25 +12,23 @@ import Product2 from "@/public/assets/images/krisgold-chair.png";
 const Cart = () => {
   const router = useRouter();
 
-  const [quantity1, setQuantity1] = useState<string>("01");
-  const [quantity2, setQuantity2] = useState<string>("02");
+  const [quantity1, setQuantity1] = useState<number>(1);
+  const [quantity2, setQuantity2] = useState<number>(2);
 
-  const handleQuantityChange1 = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let value = parseInt(e.target.value);
-    if (value < 10) {
-      setQuantity1(`0${value}`);
-    } else {
-      setQuantity1(`${value}`);
-    }
+  const handleDecrement1 = () => {
+    if (quantity1 > 0) setQuantity1(quantity1 - 1);
   };
 
-  const handleQuantityChange2 = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let value = parseInt(e.target.value);
-    if (value < 10) {
-      setQuantity2(`0${value}`);
-    } else {
-      setQuantity2(`${value}`);
-    }
+  const handleIncrement1 = () => {
+    if (quantity1 < 100) setQuantity1(quantity1 + 1);
+  };
+
+  const handleDecrement2 = () => {
+    if (quantity2 > 0) setQuantity2(quantity2 - 1);
+  };
+
+  const handleIncrement2 = () => {
+    if (quantity2 < 100) setQuantity2(quantity2 + 1);
   };
 
   return (
@@ -70,19 +68,30 @@ const Cart = () => {
               <p className="text-base">Pricing</p>
               <p className="text-[14px]">$50</p>
             </span>
+
             <span className="flex gap-6 items-center">
               <p className="text-base">Quantity</p>
-              <input
-                type="number"
-                id="quantity1"
-                title="Quantity 1"
-                min={0}
-                max={100}
-                value={quantity1}
-                onChange={handleQuantityChange1}
-                className="w-[72px] h-[44px] px-2 rounded-[4px] border border-[#585858] shadow-sm text-base"
-              />
+              <span className="flex w-[120px] h-[44px] rounded-[5px] border border-black text-[18px] font-bold text-black bg-[#D9D9D9]">
+                <button
+                  type="button"
+                  onClick={handleDecrement1}
+                  className="w-[40px] flex justify-center items-center rounded-[5px] bg-white hover:bg-gray-50 active:scale-95 duration-150"
+                >
+                  -
+                </button>
+                <span className="w-[40px] flex justify-center items-center">
+                  {quantity1}
+                </span>
+                <button
+                  type="button"
+                  onClick={handleIncrement1}
+                  className="w-[40px] flex justify-center items-center rounded-[5px] bg-white hover:bg-gray-50 active:scale-95 duration-150"
+                >
+                  +
+                </button>
+              </span>
             </span>
+
             <span className="flex gap-6 items-center">
               <p className="text-base">Subtotal</p>
               <p className="text-[14px]">$50</p>
@@ -132,27 +141,29 @@ const Cart = () => {
               <span className="flex justify-center">
                 <p className="text-[18px]">$50</p>
               </span>
-              <span className="flex justify-center">
-                <input
-                  type="number"
-                  id="quantity1"
-                  title="Quantity 1"
-                  min={0}
-                  max={100}
-                  value={quantity1}
-                  onChange={handleQuantityChange1}
-                  className="w-[72px] h-[44px] px-2 rounded-[4px] border border-[#585858] shadow-sm text-base"
-                />
-                {/* <input
-                  type="number"
-                  id="quantity"
-                  title="Quantity"
-                  min={0}
-                  defaultValue={1}
-                  max={100}
-                  className=" w-[72px] h-[44px] px-2 rounded-[4px] border border-[#585858] shadow-sm text-base"
-                /> */}
-              </span>
+
+              <div className="flex justify-center">
+                <span className="flex w-[180px] h-[44px] rounded-[5px] border border-black text-[18px] font-bold text-black bg-[#D9D9D9]">
+                  <button
+                    type="button"
+                    onClick={handleDecrement1}
+                    className="w-[60px] flex justify-center items-center rounded-[5px] bg-white hover:bg-gray-50 active:scale-95 duration-150"
+                  >
+                    -
+                  </button>
+                  <span className="w-[60px] flex justify-center items-center">
+                    {quantity1}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={handleIncrement1}
+                    className="w-[60px] flex justify-center items-center rounded-[5px] bg-white hover:bg-gray-50 active:scale-95 duration-150"
+                  >
+                    +
+                  </button>
+                </span>
+              </div>
+
               <span className="flex justify-center">
                 <p className="text-[18px]">$50</p>
               </span>
@@ -194,18 +205,29 @@ const Cart = () => {
               <span className="flex justify-center">
                 <p className="text-[18px]">$40</p>
               </span>
-              <span className="flex justify-center">
-                <input
-                  type="number"
-                  id="quantity2"
-                  title="Quantity 2"
-                  min={0}
-                  max={100}
-                  value={quantity2}
-                  onChange={handleQuantityChange2}
-                  className="w-[72px] h-[44px] px-2 rounded-[4px] border border-[#585858] shadow-sm text-base"
-                />
-              </span>
+
+              <div className="flex justify-center">
+                <span className="flex w-[180px] h-[44px] rounded-[5px] border border-black text-[18px] font-bold text-black bg-[#D9D9D9]">
+                  <button
+                    type="button"
+                    onClick={handleDecrement2}
+                    className="w-[60px] flex justify-center items-center rounded-[5px] bg-white hover:bg-gray-50 active:scale-95 duration-150"
+                  >
+                    -
+                  </button>
+                  <span className="w-[60px] flex justify-center items-center">
+                    {quantity2}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={handleIncrement2}
+                    className="w-[60px] flex justify-center items-center rounded-[5px] bg-white hover:bg-gray-50 active:scale-95 duration-150"
+                  >
+                    +
+                  </button>
+                </span>
+              </div>
+
               <span className="flex justify-center">
                 <p className="text-[18px]">$40</p>
               </span>
@@ -239,7 +261,7 @@ const Cart = () => {
           <button
             onClick={() => router.push("/")}
             type="button"
-            className="text-base text-black font-medium border border-romekan-blue py-[10px] lg:py-[16px] px-[48px] rounded-[4px] lg:rounded-[18px] w-max mx-auto lg:mx-0 active:scale-95 duration-150 hover:bg-romekan-blue hover:text-white"
+            className="text-base text-romekan-blue font-medium border border-romekan-blue py-[10px] lg:py-[16px] px-[48px] rounded-[4px] w-max mx-auto lg:mx-0 active:scale-95 duration-150 hover:bg-romekan-blue hover:text-white"
           >
             Return to store
           </button>
@@ -252,11 +274,11 @@ const Cart = () => {
                 name="coupon"
                 placeholder="Coupon Code"
                 required
-                className="border border-romekan-blue h-[56px] w-full lg:w-[300px] p-4 focus:outline-romekan-blue uppercase placeholder:capitalize"
+                className="border border-romekan-blue rounded-[4px] h-[56px] w-full lg:w-[300px] p-4 focus:outline-romekan-blue uppercase placeholder:capitalize"
               />
               <button
                 type="submit"
-                className="text-base border border-romekan-blue h-[56px] p-[10px] px-[20px] w-max md:min-w-max lg:w-max active:scale-95 duration-150 bg-romekan-blue text-white"
+                className="text-base rounded-[4px] border border-romekan-blue h-[56px] p-[10px] px-[20px] w-max mx-auto md:min-w-max lg:w-max active:scale-95 duration-150 bg-romekan-blue text-white"
               >
                 Apply coupon
               </button>
@@ -285,7 +307,7 @@ const Cart = () => {
               <button
                 onClick={() => router.push("/checkout")}
                 type="button"
-                className="text-base border border-romekan-blue h-[56px] p-[10px] px-[20px] w-max mx-auto active:scale-95 duration-150 bg-romekan-blue text-white"
+                className="text-base rounded-[4px] border border-romekan-blue h-[56px] p-[10px] px-[20px] w-max mx-auto active:scale-95 duration-150 bg-romekan-blue text-white"
               >
                 Proceed to Checkout
               </button>
