@@ -79,28 +79,60 @@ const Navbar = () => {
         <div
           className={`flex-1 justify-self-center pb-3 md:block md:pb-0 md:mt-0 ${
             state
-              ? "flex justify-center text-center pt-12 absolute h-screen w-full p-4 backdrop-blur-lg bg-black/70 text-white"
+              ? "flex flex-col gap-8 pt-12 absolute h-screen w-3/4 sm:w-1/2 p-4 backdrop-blur-lg bg-white rounded-r-3xl shadow-md text-[#777E90]"
               : "hidden"
           }`}
         >
           <ul className="justify-center items-center space-y-8 md:flex md:space-x-8 md:space-y-0">
             {navigation.map((item, idx) => {
-              return (
-                <li
-                  key={idx}
-                  className="md:text-[14px] text-[22px] text-white md:text-romekan-navbar font-medium hover:text-romekan-blue duration-150"
-                >
-                  <Link
-                    href={item.path}
-                    className="group transition duration-300"
+              if (idx === 2) {
+                return (
+                  <li
+                    key={idx}
+                    className="hidden md:block md:text-[14px] text-[22px] text-[#777E90] md:text-romekan-navbar font-medium hover:text-romekan-blue duration-150"
                   >
-                    {item.title}
-                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-romekan-blue" />
-                  </Link>
-                </li>
-              );
+                    <Link
+                      href={item.path}
+                      className="group transition duration-300"
+                    >
+                      {item.title}
+                      <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-romekan-blue" />
+                    </Link>
+                  </li>
+                );
+              } else {
+                return (
+                  <li
+                    key={idx}
+                    className="md:text-[14px] text-[22px] text-[#777E90] md:text-romekan-navbar font-medium hover:text-romekan-blue duration-150"
+                  >
+                    <Link
+                      href={item.path}
+                      className="group transition duration-300"
+                    >
+                      {item.title}
+                      <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-romekan-blue" />
+                    </Link>
+                  </li>
+                );
+              }
             })}
+            <Link
+              href=""
+              className="md:text-[14px] text-[22px] text-[#777E90] md:text-romekan-navbar font-medium group transition duration-300 block md:hidden"
+            >
+              My Order
+              <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-romekan-blue" />
+            </Link>
           </ul>
+
+          <div className="flex flex-col gap-6 pt-4 md:hidden md:text-[14px] text-[22px] text-[#777E90] md:text-romekan-navbar font-medium">
+            <p className="text-[14px]">OTHER</p>
+            <Link href="" className="group transition duration-300">
+              Contact Us
+              <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-romekan-blue" />
+            </Link>
+          </div>
         </div>
 
         <div className="hidden md:inline-flex items-center gap-x-8 md:px-8">
