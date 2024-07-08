@@ -275,6 +275,22 @@ const Checkout = () => {
                 className="h-[38px] px-2 w-full text-[12px] text-[#828282] border border-[#D3D3D3] rounded-[3.33px] focus:border-romekan-blue outline-none"
               />
             </span>
+
+            {/* Save */}
+            <span className="flex items-center gap-x-2.5 pt-4">
+              <input
+                type="radio"
+                name="save"
+                id="save"
+                className="form-radio border-gray-400 text-indigo-600 focus:ring-indigo-600 duration-150"
+              />
+              <label
+                htmlFor="save"
+                className="text-[#25252D] text-[14px] lg:text-base"
+              >
+                Save information
+              </label>
+            </span>
           </div>
         </div>
 
