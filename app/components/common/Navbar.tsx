@@ -104,10 +104,11 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:inline-flex items-center gap-x-8 md:px-8">
+          {/* hidden cause there's no wishlist page */}
           <button
             type="button"
             title="Wishlist"
-            className="active:scale-95 duration-150"
+            className="active:scale-95 duration-150 hidden"
           >
             <svg
               width="19"
@@ -124,6 +125,7 @@ const Navbar = () => {
               />
             </svg>
           </button>
+          {/* hidden cause there's no wishlist page */}
 
           <button
             onClick={() => router.push("/cart")}
