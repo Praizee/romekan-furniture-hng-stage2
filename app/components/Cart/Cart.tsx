@@ -35,7 +35,7 @@ const Cart = () => {
     <BaseLayout>
       <section className="min-h-screen mx-auto max-w-screen-xl px-4 md:px-8 py-12 lg:py-16 text-black flex flex-col gap-8 lg:gap-20">
         {/* nav */}
-        <div className="flex gap-2">
+        <div className="flex gap-2 text-[14px] lg:text-base">
           <Link
             href="/"
             className="active:scale-95 duration-150 text-romekan-text-100 hover:text-romekan-blue"
