@@ -109,7 +109,7 @@ const CheckoutModal: React.FC = () => {
                 </span>
 
                 <span className="border border-[#4E976C] rounded-full size-[60px] lg:size-[120px] text-[#5BB17E] text-[25px] lg:text-[35.56px] p-4 flex justify-center items-center active:scale-95 duration-150">
-                  ✔
+                  <FaCheck />
                 </span>
 
                 <button
