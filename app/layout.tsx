@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s | Timbu Cloud Shop",
     default: "Timbu Cloud Shop",
   },
-  description: "Timbu Cloud Shop Mini Online Store",
+  description: "Timbu Cloud Shop — Mini Online Store",
 
   keywords: ["Timbu", "Timbu Cloud", "Timbu Shop", "Timbu Cloud Shop"],
   // "ROMEKAN",
