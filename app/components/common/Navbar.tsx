@@ -69,9 +69,9 @@ const Navbar = () => {
               onClick={() => setState(!state)}
             >
               {state ? (
-                <IoClose className="h-6 w-6" />
+                <IoClose className="size-6" />
               ) : (
-                <IoMenu className="h-6 w-6" />
+                <IoMenu className="size-6" />
               )}
             </button>
           </div>
