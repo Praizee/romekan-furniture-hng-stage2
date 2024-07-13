@@ -312,7 +312,11 @@ const Checkout = () => {
               >
                 <span className="flex gap-4 items-center">
                   <span className="bg-[#F9F9F9] w-[88px] h-[64px] flex justify-center items-center">
-                    <Image src={item.imageSrc} alt={item.name} />
+                    <Image
+                      src={item.imageSrc}
+                      alt={item.name}
+                      className="max-w-[52px] max-h-[74px]"
+                    />
                   </span>
                   <span className="space-y-1">
                     <p className="text-romekan-text-300 text-[18px]">
