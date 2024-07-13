@@ -1,13 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { IoClose, IoMenu } from "react-icons/io5";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useCartStore } from "@/app/store/cartStore";
+
+import { IoClose, IoMenu } from "react-icons/io5";
 
 const Navbar = () => {
   const [state, setState] = useState(false);
   const router = useRouter();
+
+  const cart = useCartStore((state) => state.cart);
 
   const navigation = [
     { title: "Home", path: "/" },
@@ -60,7 +64,8 @@ const Navbar = () => {
                 />
               </svg>
               <p className="absolute -top-2 -right-3 bg-romekan-blue rounded-full flex items-center justify-center text-[10px] font-semibold text-white size-[21px]">
-                10
+                {cart.length}
+                {/* {cart.length || 0} */}
               </p>
             </button>
 
@@ -195,7 +200,8 @@ const Navbar = () => {
               />
             </svg>
             <p className="absolute -top-2 -right-3 bg-romekan-blue rounded-full flex items-center justify-center text-[10px] font-semibold text-white size-[21px]">
-              10
+              {cart.length}
+              {/* {cart.length || 0} */}
             </p>
           </button>
         </div>
