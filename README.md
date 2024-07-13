@@ -1,4 +1,8 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# HNG 11 Internship - Stage 2 Task
+
+This repository contains the code for the HNG 11 Internship Stage 2 Frontend Task. The task involves building a mini online store.
+
+<!-- This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). -->
 
 ## Getting Started
 
