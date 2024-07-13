@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import Image, { StaticImageData } from "next/image";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { useCartStore } from "@/app/store/cartStore";
 import FadeUp from "@/app/components/common/FadeUp";
 
 import Product1 from "@/public/assets/images/product-1.png";
@@ -39,16 +39,17 @@ interface Product {
   name: string;
   price: number;
   discountPrice: number;
-  imageSrc: StaticImageData;
+  imageSrc: string;
   discount: string;
 }
 
 const ProductListing: React.FC = () => {
-  const router = useRouter();
   const [selectedButton, setSelectedButton] = useState<string>("1");
   const [selectedCategory, setSelectedCategory] = useState<
     "Chairs" | "Beds" | "Dining sets" | "TV consoles"
   >("Chairs");
+
+  const addToCart = useCartStore((state) => state.addToCart);
 
   const handleButtonClick = (value: string) => {
     setSelectedButton(value);
@@ -68,7 +69,7 @@ const ProductListing: React.FC = () => {
         name: "Black Party Chair",
         price: 49,
         discountPrice: 24,
-        imageSrc: Product1,
+        imageSrc: Product1.src,
         discount: "",
       },
       {
@@ -76,7 +77,7 @@ const ProductListing: React.FC = () => {
         name: "White classy chair",
         price: 64,
         discountPrice: 130,
-        imageSrc: Product2,
+        imageSrc: Product2.src,
         discount: "-35%",
       },
       {
@@ -84,7 +85,7 @@ const ProductListing: React.FC = () => {
         name: "BRed Party Chair",
         price: 54,
         discountPrice: 124,
-        imageSrc: Product3,
+        imageSrc: Product3.src,
         discount: "",
       },
       {
@@ -92,7 +93,7 @@ const ProductListing: React.FC = () => {
         name: "Krisgold Armgold",
         price: 49,
         discountPrice: 234,
-        imageSrc: Product4,
+        imageSrc: Product4.src,
         discount: "",
       },
       {
@@ -100,7 +101,7 @@ const ProductListing: React.FC = () => {
         name: "White classy chair",
         price: 49,
         discountPrice: 240,
-        imageSrc: Product5,
+        imageSrc: Product5.src,
         discount: "",
       },
       {
@@ -108,7 +109,7 @@ const ProductListing: React.FC = () => {
         name: "Comfy chair",
         price: 49,
         discountPrice: 264,
-        imageSrc: Product6,
+        imageSrc: Product6.src,
         discount: "-35%",
       },
       {
@@ -116,7 +117,7 @@ const ProductListing: React.FC = () => {
         name: "Black Party Chair",
         price: 49,
         discountPrice: 224,
-        imageSrc: Product7,
+        imageSrc: Product7.src,
         discount: "",
       },
       {
@@ -124,7 +125,7 @@ const ProductListing: React.FC = () => {
         name: "White classy chair",
         price: 69,
         discountPrice: 130,
-        imageSrc: Product8,
+        imageSrc: Product8.src,
         discount: "-35%",
       },
       {
@@ -132,7 +133,7 @@ const ProductListing: React.FC = () => {
         name: "Black Party Chair",
         price: 54,
         discountPrice: 124,
-        imageSrc: Product9,
+        imageSrc: Product9.src,
         discount: "",
       },
       {
@@ -140,7 +141,7 @@ const ProductListing: React.FC = () => {
         name: "Krisgold Armgold",
         price: 49,
         discountPrice: 224,
-        imageSrc: Product10,
+        imageSrc: Product10.src,
         discount: "",
       },
       {
@@ -148,7 +149,7 @@ const ProductListing: React.FC = () => {
         name: "White classy chair",
         price: 89,
         discountPrice: 204,
-        imageSrc: Product11,
+        imageSrc: Product11.src,
         discount: "",
       },
       {
@@ -156,7 +157,7 @@ const ProductListing: React.FC = () => {
         name: "Comfy chair",
         price: 49,
         discountPrice: 124,
-        imageSrc: Product12,
+        imageSrc: Product12.src,
         discount: "-35%",
       },
     ],
@@ -166,7 +167,7 @@ const ProductListing: React.FC = () => {
         name: "Luxury King Bed",
         price: 49,
         discountPrice: 24,
-        imageSrc: Bed1,
+        imageSrc: Bed1.src,
         discount: "",
       },
       {
@@ -174,7 +175,7 @@ const ProductListing: React.FC = () => {
         name: "White cozy Bed",
         price: 64,
         discountPrice: 130,
-        imageSrc: Bed2,
+        imageSrc: Bed2.src,
         discount: "-35%",
       },
       {
@@ -182,7 +183,7 @@ const ProductListing: React.FC = () => {
         name: "Rustic Wooden Bed",
         price: 54,
         discountPrice: 124,
-        imageSrc: Bed3,
+        imageSrc: Bed3.src,
         discount: "",
       },
       {
@@ -190,7 +191,7 @@ const ProductListing: React.FC = () => {
         name: "Vintage Queen Bed",
         price: 49,
         discountPrice: 234,
-        imageSrc: Bed4,
+        imageSrc: Bed4.src,
         discount: "",
       },
       {
@@ -198,7 +199,7 @@ const ProductListing: React.FC = () => {
         name: "Modern Classy Bed",
         price: 49,
         discountPrice: 240,
-        imageSrc: Bed5,
+        imageSrc: Bed5.src,
         discount: "",
       },
     ],
@@ -208,7 +209,7 @@ const ProductListing: React.FC = () => {
         name: "Classic Oak Dining Set",
         price: 49,
         discountPrice: 24,
-        imageSrc: DiningSet1,
+        imageSrc: DiningSet1.src,
         discount: "",
       },
       {
@@ -216,7 +217,7 @@ const ProductListing: React.FC = () => {
         name: "Modern Dining Set",
         price: 64,
         discountPrice: 130,
-        imageSrc: DiningSet2,
+        imageSrc: DiningSet2.src,
         discount: "-35%",
       },
       {
@@ -224,7 +225,7 @@ const ProductListing: React.FC = () => {
         name: "Elegant Marble Dining Set",
         price: 54,
         discountPrice: 124,
-        imageSrc: DiningSet3,
+        imageSrc: DiningSet3.src,
         discount: "",
       },
       {
@@ -232,7 +233,7 @@ const ProductListing: React.FC = () => {
         name: "Contemporary Metal Dining Set",
         price: 49,
         discountPrice: 234,
-        imageSrc: DiningSet4,
+        imageSrc: DiningSet4.src,
         discount: "",
       },
     ],
@@ -242,7 +243,7 @@ const ProductListing: React.FC = () => {
         name: "Modern Media Stand",
         price: 49,
         discountPrice: 24,
-        imageSrc: TVConsole1,
+        imageSrc: TVConsole1.src,
         discount: "",
       },
       {
@@ -250,7 +251,7 @@ const ProductListing: React.FC = () => {
         name: "Rustic TV Cabinet",
         price: 64,
         discountPrice: 130,
-        imageSrc: TVConsole2,
+        imageSrc: TVConsole2.src,
         discount: "-35%",
       },
       {
@@ -258,7 +259,7 @@ const ProductListing: React.FC = () => {
         name: "Sleek TV Console",
         price: 54,
         discountPrice: 124,
-        imageSrc: TVConsole3,
+        imageSrc: TVConsole3.src,
         discount: "",
       },
       {
@@ -266,7 +267,7 @@ const ProductListing: React.FC = () => {
         name: "Minimalist TV Unit",
         price: 49,
         discountPrice: 234,
-        imageSrc: TVConsole4,
+        imageSrc: TVConsole4.src,
         discount: "",
       },
     ],
@@ -362,6 +363,8 @@ const ProductListing: React.FC = () => {
                     <Image
                       src={product.imageSrc}
                       alt={product.name}
+                      width={250}
+                      height={271}
                       className="hover:scale-110 duration-200 max-w-[76px] max-h-[87px] w-auto h-auto lg:max-w-full lg:max-h-full"
                     />
                   </span>
@@ -387,7 +390,8 @@ const ProductListing: React.FC = () => {
                     </span>
 
                     <button
-                      onClick={() => router.push("/cart")}
+                      onClick={() => addToCart(product)}
+                      // onClick={() => router.push("/cart")}
                       type="button"
                       title="Add to cart"
                       className="bg-romekan-blue size-[20px] lg:size-[43px] p-0 lg:p-[8px] rounded-full flex justify-center items-center duration-150 active:scale-95"
