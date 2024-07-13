@@ -6,32 +6,37 @@ import Link from "next/link";
 import Image from "next/image";
 import { BaseLayout } from "@/app/_layouts";
 
-import Product1 from "@/public/assets/images/red-chair.png";
-import Product2 from "@/public/assets/images/krisgold-chair.png";
 import CheckoutModal from "./CheckoutModal";
+import { useCartStore } from "@/app/store/cartStore";
 
 const Checkout = () => {
+  const { cart } = useCartStore();
+  const [agreeTerms, setAgreeTerms] = useState(false);
+
+  const calculateSubtotal = () => {
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
+
+  const calculateTotal = () => {
+    // Shipping is free for now
+    return calculateSubtotal();
+  };
+
+  const handleAgreeTermsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAgreeTerms(e.target.checked);
+  };
+
+  const handlePlaceOrder = () => {
+    if (agreeTerms) {
+      // Handle placing the order logic here later, e.g., redirect to success page or show a confirmation
+      // You can also clear the cart or update order status
+      alert("Order placed successfully!");
+    } else {
+      alert("Please agree to the terms and conditions.");
+    }
+  };
+
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  const [quantity1, setQuantity1] = useState<string>("01");
-  const [quantity2, setQuantity2] = useState<string>("02");
-
-  const handleQuantityChange1 = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let value = parseInt(e.target.value);
-    if (value < 10) {
-      setQuantity1(`0${value}`);
-    } else {
-      setQuantity1(`${value}`);
-    }
-  };
-
-  const handleQuantityChange2 = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let value = parseInt(e.target.value);
-    if (value < 10) {
-      setQuantity2(`0${value}`);
-    } else {
-      setQuantity2(`${value}`);
-    }
-  };
 
   return (
     <BaseLayout>
@@ -300,33 +305,26 @@ const Checkout = () => {
               Order summary
             </h3>
 
-            <div className="flex gap-4 items-center justify-between bg-white min-h-[107px] px-2 lg:px-4">
-              <span className="flex gap-4 items-center">
-                <span className="bg-[#F9F9F9] w-[88px] h-[64px] flex justify-center items-center">
-                  <Image src={Product1} alt="product" />
+            {cart.map((item) => (
+              <div
+                key={item.id}
+                className="flex gap-4 items-center justify-between bg-white min-h-[107px] px-2 lg:px-4"
+              >
+                <span className="flex gap-4 items-center">
+                  <span className="bg-[#F9F9F9] w-[88px] h-[64px] flex justify-center items-center">
+                    <Image src={item.imageSrc} alt={item.name} />
+                  </span>
+                  <span className="space-y-1">
+                    <p className="text-romekan-text-300 text-[18px]">
+                      {item.name}
+                    </p>
+                    <p className="text-[18px]">Qty : {item.quantity}</p>
+                  </span>
                 </span>
-                <span className="space-y-1">
-                  <p className="text-romekan-text-300 text-[18px]">Red Chair</p>
-                  <p className="text-[18px]">Qty : 2</p>
-                </span>
-              </span>
 
-              <p className="text-[18px]">$50</p>
-            </div>
-
-            <div className="hidden lg:flex gap-4 items-center justify-between bg-white min-h-[107px] px-2 lg:px-4">
-              <span className="flex gap-4 items-center">
-                <span className="bg-[#F9F9F9] w-[88px] h-[64px] flex justify-center items-center">
-                  <Image src={Product2} alt="product" />
-                </span>
-                <span className="space-y-1">
-                  <p className="text-romekan-text-300 text-[18px]">Red Chair</p>
-                  <p className="text-[18px]">Qty : 2</p>
-                </span>
-              </span>
-
-              <p className="text-[18px]">$40</p>
-            </div>
+                <p className="text-[18px]">${item.price}</p>
+              </div>
+            ))}
           </div>
 
           {/* cart total */}
@@ -338,8 +336,14 @@ const Checkout = () => {
               <span className="text-[14px] lg:text-base flex gap-8 justify-between pb-4">
                 <p className="hidden lg:block">Subtotal:</p>
                 <p className="block lg:hidden text-[#8A8A8F]">Product price:</p>
-                <p className="hidden lg:block">$80</p>
-                <p className="block lg:hidden">$50</p>
+                <p className="hidden lg:block">${calculateSubtotal()}</p>
+                <p className="block lg:hidden">
+                  $
+                  {cart.reduce(
+                    (total, item) => total + item.price * item.quantity,
+                    0
+                  )}
+                </p>
               </span>
 
               <span className="text-[14px] lg:text-base flex gap-8 justify-between py-4">
@@ -349,12 +353,19 @@ const Checkout = () => {
 
               <span className="text-[14px] lg:text-base flex gap-8 justify-between py-4">
                 <p className="">Total:</p>
-                <p className="hidden lg:block">$80</p>
-                <p className="block lg:hidden">$50</p>
+                <p className="hidden lg:block">${calculateTotal()}</p>
+                <p className="block lg:hidden">
+                  $
+                  {cart.reduce(
+                    (total, item) => total + item.price * item.quantity,
+                    0
+                  )}
+                </p>
               </span>
             </span>
           </div>
 
+          {/* payment options */}
           <div className="flex flex-col gap-4">
             <h3 className="text-base lg:text-[24px] font-medium pb-2">
               Payment options
@@ -363,7 +374,7 @@ const Checkout = () => {
               <span className="flex items-center gap-x-2.5">
                 <input
                   type="radio"
-                  name="cashOnDelivery"
+                  name="paymentMethod"
                   defaultChecked
                   id="cashOnDelivery"
                   className="form-radio border-gray-400 text-indigo-600 focus:ring-indigo-600 duration-150"
@@ -388,14 +399,18 @@ const Checkout = () => {
               </p>
             </span>
 
-            <label htmlFor="TermsAndConditions" className="flex gap-4">
+            <label
+              htmlFor="TermsAndConditions"
+              className="flex gap-4 items-center"
+            >
               <input
                 type="checkbox"
                 id="TermsAndConditions"
                 name="terms_and_conditions"
+                checked={agreeTerms}
+                onChange={handleAgreeTermsChange}
                 className="size-5 rounded-md border-gray-200 bg-white shadow-sm"
               />
-
               <span className="text-[#25252D] text-[12px] lg:text-base">
                 I agree to the{" "}
                 <Link
@@ -422,13 +437,17 @@ const Checkout = () => {
             </label>
           </div>
 
-          <CheckoutModal />
+          {/* Complete order button */}
           {/* <button
             type="button"
+            onClick={handlePlaceOrder}
             className="text-[14px] lg:text-base rounded-[4px] border border-romekan-blue h-[56px] p-[10px] px-[20px] w-max mx-auto active:scale-95 duration-150 bg-romekan-blue text-white"
           >
             Complete order
           </button> */}
+
+          {/* Checkout modal */}
+          <CheckoutModal />
         </div>
       </section>
     </BaseLayout>
