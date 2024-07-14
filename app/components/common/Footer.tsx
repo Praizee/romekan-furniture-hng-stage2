@@ -71,7 +71,10 @@ const Footer = () => {
             {/* copyright */}
             <p className="hidden md:block max-w-xs lg:max-w-full">
               © {currentYear}{" "}
-              <Link href="" className="hover:text-romekan-blue duration-150">
+              <Link
+                href="https://stephen-adeniji.is-a.dev/"
+                className="hover:text-romekan-blue duration-150"
+              >
                 {" "}
                 Romekan Furnitures
               </Link>
@@ -144,7 +147,10 @@ const Footer = () => {
           {/* copyright */}
           <p className="text-center lg:text-start">
             © {currentYear}{" "}
-            <Link href="" className="hover:text-romekan-blue duration-150">
+            <Link
+              href="https://stephen-adeniji.is-a.dev/"
+              className="hover:text-romekan-blue duration-150"
+            >
               {" "}
               Romekan Furnitures
             </Link>
